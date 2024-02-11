@@ -1,6 +1,6 @@
 import "./ScoreBoard.css";
 import GameControl from "./GameControl";
-export default function ScoreBoard() {
+export default function ScoreBoard({reset}) {
   return (
     <>
       <div id="scoreBoardContainer">
@@ -11,7 +11,7 @@ export default function ScoreBoard() {
         <button>
           Best <p>2048</p>
         </button>
-        <GameControl />
+        <GameControl reset={reset} />
       </div>
     </>
   );

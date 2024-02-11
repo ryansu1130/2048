@@ -1,8 +1,8 @@
 import "./Square.css"
-export default function Square(){
+export default function Square({number}){
     return(
         <div id="SquareContainer">
-            <span>2</span>
+            <span>{number}</span>
         </div>
     )
 }
