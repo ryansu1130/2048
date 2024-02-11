@@ -1,11 +1,14 @@
 import { useState } from "react";
 import "./App.css";
-
+import ScoreBoard from "./ScoreBoard";
+import GameBoard from "./GameBoard";
 function App() {
-
   return (
     <>
-      <h1>2048+</h1>
+      <div id="mainContainer">
+        <ScoreBoard />
+        <GameBoard />
+      </div>
     </>
   );
 }

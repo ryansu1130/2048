@@ -1,0 +1,17 @@
+#scoreBoardContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#scoreBoardContainer h1{
+    font-size: 5vw;
+    align-self: center;
+}
+
+#scoreBoardContainer button{
+    background-color: white;
+    width: 15%;
+    font-size: 2vw;
+    border-radius: 15px;
+}
