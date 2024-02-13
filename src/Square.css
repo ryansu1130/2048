@@ -1,12 +1,14 @@
-#SquareContainer{
-    border: 1px solid black;
-    width: 25%;
-    height: 20vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#SquareContainer {
+  border: 1px solid black;
+  width: 25%;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#SquareContainer span{
-    font-size: 3vw;
+#SquareContainer span {
+  font-size: 3vw;
+  color: black;
 }
+
