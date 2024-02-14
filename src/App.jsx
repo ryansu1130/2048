@@ -24,10 +24,10 @@ function App() {
     null,
     null,
     null,
+    2,
+    2,
     null,
-    2,
-    2,
-    4,
+    null,
   ];
   const [board, setBoard] = useState(initBoard);
   useEffect(() => {
@@ -130,6 +130,12 @@ function App() {
           copy[num4] = null
           setBoard(copy)
         }
+        else if (board[num3] === board[num4]){
+          copy[num2] = board[num3] + board[num4]
+          copy[num3] = null
+          copy[num4] = null
+          setBoard(copy)
+        }
         else if (board[num1] !== board[num3]){
           copy[num2] = board[num3]
           copy[num3] = board[num4]
@@ -189,29 +195,249 @@ function App() {
     }
   }
 
+  const thirdFourthBoxMissing = (num1, num2, num3, num4) =>{
+    if(board[num1] !== null && board[num2] !== null && board[num3] === null &&board[num4] === null )
+    {
+      let copy = board;
+      if(board[num1] === board[num2])
+      {
+        copy[num1] = board[num1] + board[num2]
+        copy[num2] = null
+        setBoard(copy)
+      }
+    }
+  }
+
+  const secondForthBoxMissing = (num1, num2, num3, num4) =>{
+    if(board[num1] !== null && board[num2] === null && board[num3] !== null &&board[num4] === null )
+    {
+      let copy = board;
+      if(board[num1] === board[num3])
+      {
+        copy[num1] = board[num1] + board[num3]
+        copy[num3] = null
+        setBoard(copy)
+      }
+      else if(board[num1] !== board[num3])
+      {
+        copy[num2] = board[num3]
+        copy[num3] = null
+        setBoard(copy)
+      }
+    }
+  }
+
+  const secondThirdBoxMissing = (num1, num2, num3, num4) =>{
+    if(board[num1] !== null && board[num2] === null && board[num3] === null &&board[num4] !== null )
+    {
+      let copy = board;
+      if(board[num1] === board[num4])
+      {
+        copy[num1] = board[num1] + board[num4]
+        copy[num2] = null
+        copy[num3] = null
+        copy[num4] = null
+        setBoard(copy)
+      }
+      else if(board[num1] !== board[num4])
+      {
+        copy[num2] = board[num4]
+        copy[num3] = null
+        copy[num4] = null
+        setBoard(copy)
+      }
+    }
+  }
+
+
+  const firstForthBoxMissing = (num1,num2,num3,num4) =>{
+    if(board[num1] === null && board[num2] !== null && board[num3] !== null &&board[num4] === null )
+    {
+      let copy = board;
+      if(board[num2] === board[num3])
+      {
+        copy[num1] = board[num2] + board[num3]
+        copy[num2] = null
+        copy[num3] = null
+        copy[num4] = null
+        setBoard(copy)
+      }
+      else if(board[num2] !== board[num3])
+      {
+        copy[num1] = board[num2]
+        copy[num2] = board[num3]
+        copy[num3] = null
+        copy[num4] = null
+        setBoard(copy)
+      }
+    }
+  }
+
+  const firstThirdBoxMissing = (num1,num2,num3,num4) =>{
+    
+    if(board[num1] === null && board[num2] !== null && board[num3] === null &&board[num4] !== null )
+    {
+      let copy = board;
+      if(board[num2] === board[num4])
+      {
+        copy[num1] = board[num2] + board[num4]
+        copy[num2] = null
+        copy[num3] = null
+        copy[num4] = null
+        setBoard(copy)
+      }
+      else if(board[num2] !== board[num4])
+      {
+        copy[num1] = board[num2]
+        copy[num2] = board[num4]
+        copy[num3] = null
+        copy[num4] = null
+        setBoard(copy)
+      }
+    }
+  }
+
+  const firstSecondBoxMissing = (num1,num2,num3,num4) =>{
+    if(board[num1] === null && board[num2] === null && board[num3] !== null &&board[num4] !== null )
+    {
+      let copy = board;
+      if(board[num3] === board[num4])
+      {
+        copy[num1] = board[num3] + board[num4]
+        copy[num2] = null
+        copy[num3] = null
+        copy[num4] = null
+        setBoard(copy)
+      }
+      else if(board[num3] !== board[num4])
+      {
+        copy[num1] = board[num3]
+        copy[num2] = board[num4]
+        copy[num3] = null
+        copy[num4] = null
+        setBoard(copy)
+      }
+    }
+  }
+
+  const onlyFirstBoxFilled = (num1, num2, num3, num4) => {
+    if(board[num1] !== null && board[num2] === null && board[num3] === null &&board[num4] === null )
+    {
+      let copy = board;
+      setBoard(copy)
+    }
+  }
+
+  const onlySecondBoxFilled = (num1, num2, num3, num4) => {
+    if(board[num1] === null && board[num2] !== null && board[num3] === null &&board[num4] === null )
+    {
+      let copy = board;
+      copy[num1] = board[num2]
+      copy[num2] = null
+      setBoard(copy)
+    }
+  }
+
+  const onlyThirdBoxFilled = (num1, num2, num3, num4) => {
+    if(board[num1] === null && board[num2] === null && board[num3] !== null &&board[num4] === null )
+    {
+      let copy = board;
+      copy[num1] = board[num3]
+      copy[num3] = null
+      setBoard(copy)
+    }
+  }
+
+  const onlyForthBoxFilled = (num1, num2, num3, num4) => {
+    if(board[num1] === null && board[num2] === null && board[num3] === null &&board[num4] !== null )
+    {
+      let copy = board;
+      copy[num1] = board[num4]
+      copy[num4] = null
+      setBoard(copy)
+    }
+  }
+
   const handleMove = (key) => {
     
     if (key === 37 || key === 65) {
-      noBoxNull(0,1,2,3)
-      noBoxNull(4,5,6,7)
-      noBoxNull(8,9,10,11)
-      noBoxNull(12,13,14,15)
-      firstBoxNull(0,1,2,3)
-      firstBoxNull(4,5,6,7)
-      firstBoxNull(8,9,10,11)
-      firstBoxNull(12,13,14,15)
-      secondBoxNull(0,1,2,3)
-      secondBoxNull(4,5,6,7)
-      secondBoxNull(8,9,10,11)
-      secondBoxNull(12,13,14,15)
-      thirdBoxNull(0,1,2,3)
-      thirdBoxNull(4,5,6,7)
-      thirdBoxNull(8,9,10,11)
-      thirdBoxNull(12,13,14,15)
+
+            //test case 8,null,4,4 will call secondBoxNull(12,13,14,15) and update the board
+      //but then thirdFourthBoxMissing(12,13,14,15) will also be called because the board
+      //is now 8,8,nul,null, making it into 16,null,null,null
+      //to slove this, we must detect a change in any of these function
+      //if a chnage is being made, then 
+      thirdFourthBoxMissing(0,1,2,3)
+      thirdFourthBoxMissing(4,5,6,7)
+      thirdFourthBoxMissing(8,9,10,11)
+      thirdFourthBoxMissing(12,13,14,15)
+
+      secondForthBoxMissing(0,1,2,3)
+      secondForthBoxMissing(4,5,6,7)
+      secondForthBoxMissing(8,9,10,11)
+      secondForthBoxMissing(12,13,14,15)
+
+      secondThirdBoxMissing(0,1,2,3)
+      secondThirdBoxMissing(4,5,6,7)
+      secondThirdBoxMissing(8,9,10,11)
+      secondThirdBoxMissing(12,13,14,15)
+
+      firstForthBoxMissing(0,1,2,3)
+      firstForthBoxMissing(4,5,6,7)
+      firstForthBoxMissing(8,9,10,11)
+      firstForthBoxMissing(12,13,14,15)
+
+      firstThirdBoxMissing(0,1,2,3)
+      firstThirdBoxMissing(4,5,6,7)
+      firstThirdBoxMissing(8,9,10,11)
+      firstThirdBoxMissing(12,13,14,15)
+
+      firstSecondBoxMissing(0,1,2,3)
+      firstSecondBoxMissing(4,5,6,7)
+      firstSecondBoxMissing(8,9,10,11)
+      firstSecondBoxMissing(12,13,14,15)
+
+      onlyFirstBoxFilled(0,1,2,3)
+      onlyFirstBoxFilled(4,5,6,7)
+      onlyFirstBoxFilled(8,9,10,11)
+      onlyFirstBoxFilled(12,13,14,15)
+
+      onlySecondBoxFilled(0,1,2,3)
+      onlySecondBoxFilled(4,5,6,7)
+      onlySecondBoxFilled(8,9,10,11)
+      onlySecondBoxFilled(12,13,14,15)
+
+      onlyThirdBoxFilled(0,1,2,3)
+      onlyThirdBoxFilled(4,5,6,7)
+      onlyThirdBoxFilled(8,9,10,11)
+      onlyThirdBoxFilled(12,13,14,15)
+
+      onlyForthBoxFilled(0,1,2,3)
+      onlyForthBoxFilled(4,5,6,7)
+      onlyForthBoxFilled(8,9,10,11)
+      onlyForthBoxFilled(12,13,14,15)
+
       forthBoxNull(0,1,2,3)
       forthBoxNull(4,5,6,7)
       forthBoxNull(8,9,10,11)
       forthBoxNull(12,13,14,15)
+      thirdBoxNull(0,1,2,3)
+      thirdBoxNull(4,5,6,7)
+      thirdBoxNull(8,9,10,11)
+      thirdBoxNull(12,13,14,15)
+      secondBoxNull(0,1,2,3)
+      secondBoxNull(4,5,6,7)
+      secondBoxNull(8,9,10,11)
+      secondBoxNull(12,13,14,15)
+      firstBoxNull(0,1,2,3)
+      firstBoxNull(4,5,6,7)
+      firstBoxNull(8,9,10,11)
+      firstBoxNull(12,13,14,15)
+      noBoxNull(0,1,2,3)
+      noBoxNull(4,5,6,7)
+      noBoxNull(8,9,10,11)
+      noBoxNull(12,13,14,15)
+
       // console.log("left");
       generateSpot();
     } else if (key === 38 || key === 87) {
