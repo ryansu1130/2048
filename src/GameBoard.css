@@ -4,3 +4,33 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+#gameDiv{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid green;
+    /* opacity: 0.5; */
+    background-color: rgba(238, 228, 218, 0.73);
+    width: 40%;
+    height: 80%;
+}
+
+#over {
+    font-size: 4vw;
+    color: black;
+}
+
+#gameDiv button{
+    background-color: none;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    margin-top: 5%;
+    padding: 2% 15%;
+    font-size: 2vw;
+    color: white;
+    background-color: black;
+}

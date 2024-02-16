@@ -30,6 +30,7 @@ function App() {
     2,
   ];
   const [board, setBoard] = useState(initBoard);
+  const [isGameOver, setIsGameOver] = useState(false)
   useEffect(() => {
     function handleKeyDown(e) {
       // console.log(e.keyCode);
@@ -406,17 +407,26 @@ function App() {
   };
 
   const generateSpot = () => {
-    let randomSpot = Math.floor(Math.random() * 16);
-    if (board[randomSpot] === null) {
-      let copy = [...board];
-      copy[randomSpot] = generateNum();
-      setBoard(copy);
-    } else {
-      generateSpot();
+    try {
+      let randomSpot = Math.floor(Math.random() * 16);
+      if (board[randomSpot] === null) {
+        let copy = [...board];
+        copy[randomSpot] = generateNum();
+        setBoard(copy);
+      } else {
+        generateSpot();
+      }
+    } catch (error) {
+      if (error instanceof RangeError){
+        setIsGameOver(true);
+        console.log(error)
+      }
+      
     }
   };
 
   const handleReset = (e) => {
+    setIsGameOver(false);
     setBoard(initBoard);
   };
 
@@ -424,7 +434,8 @@ function App() {
     <>
       <div id="mainContainer">
         <ScoreBoard reset={handleReset} score={board} />
-        <GameBoard board={board} />
+        <GameBoard board={board} isGameOver={isGameOver} reset={handleReset}  />
+
       </div>
     </>
   );
