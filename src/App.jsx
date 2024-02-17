@@ -11,6 +11,8 @@ function App() {
     }
     return 4;
   };
+
+
   const initBoard = [
     null,
     null,
@@ -24,10 +26,10 @@ function App() {
     null,
     null,
     null,
-    4,
     null,
-    2,
-    2,
+    generateNum(),
+    null,
+    generateNum(),
   ];
   const [board, setBoard] = useState(initBoard);
   const [isGameOver, setIsGameOver] = useState(false)
@@ -406,6 +408,77 @@ function App() {
     }
   };
 
+  const validateBoard = () => {
+    for (let i = 0; i < board.length; i++) {
+      //top square
+      if(typeof(board[i - 4]) === typeof(5)){
+        // console.log("top" , board[i - 4])
+        if(board[i] === board[i - 4])
+        {
+          console.log("top" , board[i - 4])
+          return false
+        }
+      }
+      //left square
+      if(typeof(board[i - 1]) === typeof(5))
+      {
+        // console.log("left", board[i - 1])
+        if(board[i] === board[i - 1] && (i - 1) === 3){
+          continue
+        }
+        if(board[i] === board[i - 1] && (i - 1) === 7){
+          continue
+        }
+        if(board[i] === board[i - 1] && (i - 1) === 11){
+          continue
+        }
+        if(board[i] === board[i - 1])
+        {
+          console.log("left", board[i - 1])
+          return false
+        }
+      }
+      //bottom square
+      if(typeof(board[i + 4]) === typeof(5))
+      {
+        // console.log("Bottom" ,board[i + 4])
+        if(board[i] === board[i + 4])
+        {
+          console.log("Bottom" ,board[i + 4])
+          return false
+        }
+      }
+
+      // right square
+      if(typeof(board[i + 1]) === typeof(5))
+      {
+        // console.log("right" , board[i + 1])
+
+        if(board[i] === board[i + 1] && (i + 1) === 4){
+          continue
+        }
+        if(board[i] === board[i + 1] && (i + 1) === 8){
+          continue
+        }
+        if(board[i] === board[i + 1] && (i + 1) === 12){
+          continue
+        }
+        if(board[i] === board[i + 1])
+        {
+          // if((i + 1) === 4 || (i + 1) === 10 || (i + 1) === 12){
+          //   return true
+          // }
+            console.log("right" , board[i + 1])
+            return false
+          
+        }
+
+        
+      }      
+    }
+    return true
+  }
+
   const generateSpot = () => {
     try {
       let randomSpot = Math.floor(Math.random() * 16);
@@ -417,8 +490,10 @@ function App() {
         generateSpot();
       }
     } catch (error) {
+      // console.log(validateBoard())
+      // setIsGameOver(validateBoard());
       if (error instanceof RangeError){
-        setIsGameOver(true);
+        setIsGameOver(validateBoard());
         console.log(error)
       }
       
