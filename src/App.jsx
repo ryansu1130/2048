@@ -26,9 +26,9 @@ function App() {
     null,
     null,
     null,
-    2,
+    generateNum(),
     null,
-    2,
+    generateNum(),
   ];
   const [board, setBoard] = useState(initBoard);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -381,6 +381,8 @@ function App() {
     }
   };
   const nextMove = (arr) => {
+    let newcopy = [...board];
+    let status = 0;
     for (let j = 0; j < 4; j++) {
       thirdFourthBoxMissing(arr[j][0], arr[j][1], arr[j][2], arr[j][3]);
       secondForthBoxMissing(arr[j][0], arr[j][1], arr[j][2], arr[j][3]);
@@ -398,7 +400,16 @@ function App() {
       firstBoxNull(arr[j][0], arr[j][1], arr[j][2], arr[j][3]);
       noBoxNull(arr[j][0], arr[j][1], arr[j][2], arr[j][3]);
     }
-    generateSpot();
+    for (let i = 0; i < newcopy.length; i++) {
+      if (newcopy[i] !== board[i]) {
+        status = 1;
+      }
+    }
+    if (status === 1) {
+      generateSpot();
+    } else {
+      return;
+    }
   };
 
   const handleMove = (key) => {
