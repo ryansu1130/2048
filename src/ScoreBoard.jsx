@@ -1,16 +1,30 @@
 import "./ScoreBoard.css";
+import { useState } from "react";
+import { useEffect } from "react";
 import GameControl from "./GameControl";
 export default function ScoreBoard({ reset, score }) {
-  let total = 0;
-  const totalScore = () => {
-    score.map((value, idx) => {
-      if(value >= total){
-        total = value;
-      }
-    });
-  };
-  totalScore();
 
+  let runningTotal = 0
+  let best = localStorage.getItem("best")
+  const [total, setTotal] = useState(0)
+  const onReset = () =>{
+    setTotal(0)
+  }
+
+  useEffect(() => {
+    score.map((value, idx) => {
+      runningTotal += value
+    });
+    setTotal(runningTotal);
+  }, [total,score])
+
+  useEffect(() => {
+    if(total >= best)
+    {
+      localStorage.setItem("best", total)
+    }
+  },[total])
+    
   return (
     <>
       <div id="scoreBoardContainer">
@@ -19,9 +33,9 @@ export default function ScoreBoard({ reset, score }) {
           Score <p>{total}</p>
         </button>
         <button>
-          Best <p>{total}</p>
+          Best <p>{best}</p>
         </button>
-        <GameControl reset={reset} />
+        <GameControl reset={reset} onReset={onReset} />
       </div>
     </>
   );
