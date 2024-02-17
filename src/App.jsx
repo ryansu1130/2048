@@ -408,8 +408,9 @@ function App() {
     if (status === 1) {
       generateSpot();
     } else {
-      return;
+      validateFullBoard();
     }
+    // generateSpot();
   };
 
   const handleMove = (key) => {
@@ -511,7 +512,7 @@ function App() {
     return true;
   };
 
-  const generateSpot = () => {
+  const generateSpot = (status) => {
     try {
       let randomSpot = Math.floor(Math.random() * 16);
       if (board[randomSpot] === null) {
@@ -520,6 +521,23 @@ function App() {
         setBoard(copy);
       } else {
         generateSpot();
+      }
+    } catch (error) {
+      if (error instanceof RangeError) {
+        setIsGameOver(validateBoard());
+        console.log(error);
+      }
+    }
+  };
+
+  const validateFullBoard = () => {
+    try {
+      let randomSpot = Math.floor(Math.random() * 16);
+      if (board[randomSpot] === null) {
+        let copy = [...board];
+        copy[randomSpot] = generateNum();
+      } else {
+        validateFullBoard();
       }
     } catch (error) {
       if (error instanceof RangeError) {
