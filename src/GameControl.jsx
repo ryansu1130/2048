@@ -7,7 +7,7 @@ export default function GameControl({reset, onReset}){
     return(
         <div id="gameControlContainer">
             <button onClick={handleReset}>New Game</button>
-            <button>Finish For Me</button>
+            <button>AI{` (Coming Soon)`}</button>
         </div>
     )
 }

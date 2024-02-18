@@ -8,7 +8,8 @@
 }
 
 #SquareContainer span {
-  font-size: 3vw;
+  font-size: 1.7vw;
+  font-weight: bolder;
   color: black;
 }
 

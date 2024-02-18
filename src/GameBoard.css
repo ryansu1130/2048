@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 1%;
 }
 
 #gameDiv{
@@ -14,7 +15,7 @@
     border: 1px solid green;
     /* opacity: 0.5; */
     background-color: rgba(238, 228, 218, 0.73);
-    width: 40%;
+    width: 38.15%;
     height: 80%;
 }
 
