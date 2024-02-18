@@ -9,6 +9,16 @@
     align-self: center;
 }
 
+#total{
+    color: #E1B23B;
+    font-weight: bold;
+}
+
+#best{
+    color: #4BDA18;
+    font-weight: bold;
+}
+
 #scoreBoardContainer button{
     background-color: white;
     width: 15%;

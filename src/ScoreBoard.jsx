@@ -30,10 +30,10 @@ export default function ScoreBoard({ reset, score }) {
       <div id="scoreBoardContainer">
         <h1>2048+</h1>
         <button>
-          Score <p>{total}</p>
+          Score <p id="total">{total}</p>
         </button>
         <button>
-          Best <p>{best}</p>
+          Best <p id="best">{best}</p>
         </button>
         <GameControl reset={reset} onReset={onReset} />
       </div>
