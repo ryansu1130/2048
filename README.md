@@ -1,6 +1,6 @@
 # 2048+ Created By Ryan Su
 
-- [@Click Here To Play 2048+](https://ryansu1130.github.io/2048/)
+- [Click Here To Play 2048+](https://ryansu1130.github.io/2048/)
 
 Thank you for stopping by.
 
@@ -14,6 +14,6 @@ The main technologies used are the following:
 - [@Vitejs](https://vitejs.dev/)
 - [@React](https://vitejs.dev/)
 
-This is my Figma Design
-![Design](./public/design.png)
+### This is my Figma Design
+![Design](./public/figmaDesign.png)
 
