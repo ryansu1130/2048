@@ -1,5 +1,5 @@
 import "./Square.css";
-export default function Square({ number }) {
+export default function Square({ number}) {
   let currRenderNum = null;
   const num2 = { backgroundColor: "#B0ECF4" };
   const num4 = { backgroundColor: "#3AD0B5" };
@@ -76,6 +76,7 @@ export default function Square({ number }) {
     default:
       currRenderNum = { backgroundColor: "white" };
   }
+
 
   return (
     <div style={currRenderNum} id="SquareContainer">

@@ -12,24 +12,6 @@ function App() {
     return 4;
   };
 
-  // const initBoard = [
-  //   2,
-  //   4,
-  //   8,
-  //   16,
-  //   32,
-  //   64,
-  //   128,
-  //   512,
-  //   1024,
-  //   2048,
-  //   4092,
-  //   8184,
-  //   16368,
-  //   generateNum(),
-  //   3,
-  //   generateNum(),
-  // ];
   const initBoard = [
     null,
     null,
@@ -574,7 +556,7 @@ function App() {
     <>
       <div id="mainContainer">
         <ScoreBoard reset={handleReset} score={board} />
-        <GameBoard board={board} isGameOver={isGameOver} reset={handleReset} />
+        <GameBoard board={board} isGameOver={isGameOver} reset={handleReset}  />
       </div>
     </>
   );

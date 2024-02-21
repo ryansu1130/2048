@@ -1,10 +1,10 @@
 import Square from "./Square";
 import "./GameBoard.css";
-export default function GameBoard({ board, isGameOver, reset }) {
+export default function GameBoard({ board, isGameOver, reset}) {
   return (
     <div id="gameBoardContainer">
       {board.map((value, idx) => {
-        return <Square key={idx} number={value} />;
+        return <Square key={idx} number={value}  />;
       })}
       {isGameOver ? (
         <div id="gameDiv">
