@@ -1,6 +1,7 @@
 import Square from "./Square";
 import "./GameBoard.css";
 export default function GameBoard({ board, isGameOver, reset}) {
+  //jsx rendering of each square and conditional game over
   return (
     <div id="gameBoardContainer">
       {board.map((value, idx) => {

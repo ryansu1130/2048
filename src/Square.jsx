@@ -1,5 +1,7 @@
 import "./Square.css";
 export default function Square({ number}) {
+
+  //color for the squares depends on the number
   let currRenderNum = null;
   const num2 = { backgroundColor: "#B0ECF4" };
   const num4 = { backgroundColor: "#3AD0B5" };
@@ -78,6 +80,7 @@ export default function Square({ number}) {
   }
 
 
+  //jsx rendering of one square
   return (
     <div style={currRenderNum} id="SquareContainer">
       <span id="newNumber">{number}</span>

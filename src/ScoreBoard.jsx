@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import GameControl from "./GameControl";
 export default function ScoreBoard({ reset, score }) {
 
+  //keep track of the scores
+  //store best score using local storage
   let runningTotal = 0
   let best = localStorage.getItem("best")
   const [total, setTotal] = useState(0)
@@ -25,6 +27,7 @@ export default function ScoreBoard({ reset, score }) {
     }
   },[total])
     
+  //jsx rendering of the scores
   return (
     <>
       <div id="scoreBoardContainer">

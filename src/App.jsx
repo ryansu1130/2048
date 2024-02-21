@@ -5,6 +5,8 @@ import ScoreBoard from "./ScoreBoard";
 import GameBoard from "./GameBoard";
 
 function App() {
+
+  //select between 2 or 4
   const generateNum = () => {
     if (Math.random() > 0.5) {
       return 2;
@@ -12,6 +14,7 @@ function App() {
     return 4;
   };
 
+  //init board
   const initBoard = [
     null,
     null,
@@ -30,8 +33,11 @@ function App() {
     null,
     generateNum(),
   ];
+
   const [board, setBoard] = useState(initBoard);
   const [isGameOver, setIsGameOver] = useState(false);
+
+  //The board changes
   useEffect(() => {
     function handleKeyDown(e) {
       handleMove(e.keyCode);
@@ -43,6 +49,7 @@ function App() {
     };
   }, [board]);
 
+  //game logic
   const noBoxNull = (num1, num2, num3, num4) => {
     let copy = board;
     if (
@@ -52,32 +59,27 @@ function App() {
       board[num4] !== null
     ) {
       if (board[num1] === board[num2] && board[num3] === board[num4]) {
-        // 2,2,2,2
         copy[num1] = board[num1] + board[num2];
         copy[num2] = board[num3] + board[num4];
         copy[num3] = null;
         copy[num4] = null;
         setBoard(copy);
       } else if (board[num3] === board[num4] && board[num4] === board[num2]) {
-        //8,4,4,4
         copy[num2] = board[num2] + board[num3];
         copy[num3] = board[num4];
         copy[num4] = null;
         setBoard(copy);
       } else if (board[num3] === board[num4] && board[num1] !== board[num2]) {
-        //8,4,2,2
         copy[num3] = board[num3] + board[num4];
         copy[num4] = null;
         setBoard(copy);
       } else if (board[num1] === board[num2] && board[num3] !== board[num4]) {
-        // 2,2,2,4
         copy[num1] = board[num1] + board[num2];
         copy[num2] = board[num3];
         copy[num3] = board[num4];
         copy[num4] = null;
         setBoard(copy);
       } else if (board[num2] === board[num3]) {
-        // 4,2,2,4
         copy[num2] = board[num2] + board[num3];
         copy[num3] = board[num4];
         copy[num4] = null;
@@ -86,6 +88,7 @@ function App() {
     }
   };
 
+  //game logic
   const firstBoxNull = (num1, num2, num3, num4) => {
     if (
       board[num1] === null &&
@@ -116,6 +119,7 @@ function App() {
     }
   };
 
+  //game logic
   const secondBoxNull = (num1, num2, num3, num4) => {
     if (
       board[num1] !== null &&
@@ -144,6 +148,7 @@ function App() {
     }
   };
 
+  //game logic
   const thirdBoxNull = (num1, num2, num3, num4) => {
     if (
       board[num1] !== null &&
@@ -171,6 +176,7 @@ function App() {
     }
   };
 
+  //game logic
   const forthBoxNull = (num1, num2, num3, num4) => {
     if (
       board[num1] !== null &&
@@ -196,6 +202,7 @@ function App() {
     }
   };
 
+  //game logic
   const thirdFourthBoxMissing = (num1, num2, num3, num4) => {
     if (
       board[num1] !== null &&
@@ -212,6 +219,7 @@ function App() {
     }
   };
 
+  //game logic
   const secondForthBoxMissing = (num1, num2, num3, num4) => {
     if (
       board[num1] !== null &&
@@ -232,6 +240,7 @@ function App() {
     }
   };
 
+  //game logic
   const secondThirdBoxMissing = (num1, num2, num3, num4) => {
     if (
       board[num1] !== null &&
@@ -255,6 +264,7 @@ function App() {
     }
   };
 
+  //game logic
   const firstForthBoxMissing = (num1, num2, num3, num4) => {
     if (
       board[num1] === null &&
@@ -279,6 +289,7 @@ function App() {
     }
   };
 
+  //game logic
   const firstThirdBoxMissing = (num1, num2, num3, num4) => {
     if (
       board[num1] === null &&
@@ -303,6 +314,7 @@ function App() {
     }
   };
 
+  //game logic
   const firstSecondBoxMissing = (num1, num2, num3, num4) => {
     if (
       board[num1] === null &&
@@ -327,6 +339,7 @@ function App() {
     }
   };
 
+  //game logic
   const onlyFirstBoxFilled = (num1, num2, num3, num4) => {
     if (
       board[num1] !== null &&
@@ -339,6 +352,7 @@ function App() {
     }
   };
 
+  //game logic
   const onlySecondBoxFilled = (num1, num2, num3, num4) => {
     if (
       board[num1] === null &&
@@ -353,6 +367,7 @@ function App() {
     }
   };
 
+  //game logic
   const onlyThirdBoxFilled = (num1, num2, num3, num4) => {
     if (
       board[num1] === null &&
@@ -367,6 +382,7 @@ function App() {
     }
   };
 
+  //game logic
   const onlyForthBoxFilled = (num1, num2, num3, num4) => {
     if (
       board[num1] === null &&
@@ -380,6 +396,8 @@ function App() {
       setBoard(copy);
     }
   };
+
+  //function to check the entire board and perform actions according to the gmae logic
   const nextMove = (arr) => {
     let newcopy = [...board];
     let status = 0;
@@ -400,6 +418,8 @@ function App() {
       firstBoxNull(arr[j][0], arr[j][1], arr[j][2], arr[j][3]);
       noBoxNull(arr[j][0], arr[j][1], arr[j][2], arr[j][3]);
     }
+
+    //only generate a new number if the move is valid, else do nothing
     for (let i = 0; i < newcopy.length; i++) {
       if (newcopy[i] !== board[i]) {
         status = 1;
@@ -410,9 +430,9 @@ function App() {
     } else {
       validateFullBoard();
     }
-    // generateSpot();
   };
 
+  //handles the key press
   const handleMove = (key) => {
     if (key === 37 || key === 65) {
       //left arrow or "A" key
@@ -451,19 +471,17 @@ function App() {
     }
   };
 
+  //check if the edge cases are legal move
   const validateBoard = () => {
     for (let i = 0; i < board.length; i++) {
       //top square
       if (typeof board[i - 4] === typeof 5) {
-        // console.log("top" , board[i - 4])
         if (board[i] === board[i - 4]) {
-          console.log("top", board[i - 4]);
           return false;
         }
       }
       //left square
       if (typeof board[i - 1] === typeof 5) {
-        // console.log("left", board[i - 1])
         if (board[i] === board[i - 1] && i - 1 === 3) {
           continue;
         }
@@ -474,23 +492,18 @@ function App() {
           continue;
         }
         if (board[i] === board[i - 1]) {
-          console.log("left", board[i - 1]);
           return false;
         }
       }
       //bottom square
       if (typeof board[i + 4] === typeof 5) {
-        // console.log("Bottom" ,board[i + 4])
         if (board[i] === board[i + 4]) {
-          console.log("Bottom", board[i + 4]);
           return false;
         }
       }
 
       // right square
       if (typeof board[i + 1] === typeof 5) {
-        // console.log("right" , board[i + 1])
-
         if (board[i] === board[i + 1] && i + 1 === 4) {
           continue;
         }
@@ -501,10 +514,6 @@ function App() {
           continue;
         }
         if (board[i] === board[i + 1]) {
-          // if((i + 1) === 4 || (i + 1) === 10 || (i + 1) === 12){
-          //   return true
-          // }
-          console.log("right", board[i + 1]);
           return false;
         }
       }
@@ -512,7 +521,8 @@ function App() {
     return true;
   };
 
-  const generateSpot = (status) => {
+  //generate a new number depends on the current board status
+  const generateSpot = () => {
     try {
       let randomSpot = Math.floor(Math.random() * 16);
       if (board[randomSpot] === null) {
@@ -523,6 +533,7 @@ function App() {
         generateSpot();
       }
     } catch (error) {
+      //board is full, then check if game should end
       if (error instanceof RangeError) {
         setIsGameOver(validateBoard());
         console.log(error);
@@ -530,6 +541,7 @@ function App() {
     }
   };
 
+  //a copy of the board to validate game status behind the sence
   const validateFullBoard = () => {
     try {
       let randomSpot = Math.floor(Math.random() * 16);
@@ -547,16 +559,18 @@ function App() {
     }
   };
 
+  //resets the game-board
   const handleReset = (e) => {
     setIsGameOver(false);
     setBoard(initBoard);
   };
 
+  //jsx rednering of the scoreboard and gameboard
   return (
     <>
       <div id="mainContainer">
         <ScoreBoard reset={handleReset} score={board} />
-        <GameBoard board={board} isGameOver={isGameOver} reset={handleReset}  />
+        <GameBoard board={board} isGameOver={isGameOver} reset={handleReset} />
       </div>
     </>
   );
