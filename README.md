@@ -1,8 +1,19 @@
-# React + Vite
+# 2048+ Created By Ryan Su
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [@Click Here To Play 2048+](https://ryansu1130.github.io/2048/)
 
-Currently, two official plugins are available:
+Thank you for stopping by.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is my attempt to re-create the classic game 2048 using the react framework.
+
+The game is 100% fully functional so feel free to have a try at it.
+
+I am currently working on a better UI and animation. Come back soon to check out the new updates.
+
+The main technologies used are the following:
+- [@Vitejs](https://vitejs.dev/)
+- [@React](https://vitejs.dev/)
+
+This is my Figma Design
+![Design](./public/design.png)
+
